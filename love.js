@@ -389,7 +389,10 @@ let yesScale = 1;
 let catState = 'idle';
 
 function dodge(e){
-  if (e){ e.preventDefault(); }
+  if (e){
+    e.preventDefault();
+    e.stopPropagation();
+  }
 
   const area = content.getBoundingClientRect();
   const b = noBtn.getBoundingClientRect();
@@ -429,7 +432,9 @@ function dodge(e){
 
 noBtn.addEventListener('pointerenter', dodge);
 noBtn.addEventListener('pointerdown', dodge);
-noBtn.addEventListener('click', dodge);
+noBtn.addEventListener('click', (e) => {
+  dodge(e);
+});
 noBtn.addEventListener('focus', dodge);
 
 function sayYes(){
@@ -454,7 +459,11 @@ function sayYes(){
   if (!reduceMotion){ heartBurst(); celebrate(); }
 }
 
-yesBtn.addEventListener('click', sayYes);
+yesBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  sayYes();
+});
 
 function spawnBurst(parent, cx, cy, n = 18){
   for (let i = 0; i < n; i++){
