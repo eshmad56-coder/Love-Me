@@ -439,7 +439,7 @@ noBtn.addEventListener('focus', dodge);
 
 function sayYes(){
   catState = 'happy';
-  title.textContent = 'Bujuku Bujuku ♡';
+  title.textContent = 'Love u to da Bujiiiiiii💗🌚♡';
   drawSprite(catCanvas, CAT_HAPPY);
   catCanvas.setAttribute('aria-label', 'A happy cat with a bow');
 
